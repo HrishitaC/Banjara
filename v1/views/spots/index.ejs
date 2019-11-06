@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+
+<br>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to BANJARA</h1>
+            <p>Your one click solution to wanderlust!</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <p style="margin: 0;">
+                        <a class="btn btn-primary btn-large" href="/spots/new">Add a new tourist spot!</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p style="margin: 0;">
+                        <a class="btn btn-primary btn-large" href="/packages">View all our packages!</a>
+                    </p>
+                </div>
+            </div>
+        </div>  
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% spots.forEach(function(spot){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="img-thumbnail">
+                    <img class="img-fluid" src = "<%=spot.image %>">
+                    <div class="caption">
+                        <h4>
+                            <%= spot.name %>
+                        </h4>
+                    </div>
+                    <p>
+                        <a href="/spots/<%= spot._id %>" class="btn btn-primary">More info!</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

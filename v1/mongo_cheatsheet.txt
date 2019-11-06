@@ -1,0 +1,16 @@
+To start mongodb:
+
+1. Open a terminal
+2. cd C:\Program Files\MongoDB\Server\4.0\bin
+3. mongod.exe --dbpath "D:\MongoDB\Server\4.0\data"
+4. Open new terminal and type "mongo" to access dbms
+
+Some mongodb commands:
+show dbs : show databases
+use <db_name> : opens pre-existing database or creates a new one and opens it
+db.<collection_name>.insert({object}) : inserts object into the pre-exisitng collection or creates the collection and inserts the object into the collection inside the selected database (referenced by db)
+shows collections: shows all the collections
+db.<collection_name>.find({object}): returns all items in collection which have the object (if paranthesis is empty, returns all otems of collection)
+db.<collection_name>.update({query_object}, {$set: update_object}) : updates all items of collection matching the query object with the update object (query and object may not be the same) (the $set makes sure that the updated object doesn't overwrite the entire item)
+db.<collection_name>.remove({query_object}): removes all items in collection that match the query
+db.<collection_name>.drop(): removes the entire collection (if there was only one collection in the db then the entire db gets removed)

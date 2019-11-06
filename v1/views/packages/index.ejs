@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+<br>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Ready to travel?</h1>
+            <p>Let us ease our holiday planning with our wonderful cost-friendly packages</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/packages/new">Add a new package!</a>
+            </p>
+        </div>  
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% packages.forEach(function(package){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="img-thumbnail">
+                    <img class="img-fluid" src = "<%=package.image %>">
+                    <div class="caption">
+                        <h4>
+                            <%= package.name %>
+                        </h4>
+                    </div>
+                    <p>
+                        <a href="/packages/<%= package._id %>" class="btn btn-primary">More info!</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

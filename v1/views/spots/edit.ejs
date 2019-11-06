@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+ 
+
+<form action="/spots/<%= spot._id %>?_method=PUT" method="POST">
+   <div class="container">
+      <h1 style="text-align: center; margin: 25px; "> Edit <%= spot.name %></h1>
+      <div class="row">
+            <div style="width: 30%; margin: 0 auto;">
+                  <input class="form-group form-control" type="text" name="spot[name]" value="<%= spot.name %>">
+                  <input class="form-group form-control" type="text" name="spot[state]" value="<%= spot.state %>">
+                  <input class="form-group form-control" type="text" name="spot[country]" value="<%= spot.country %>">
+                  <input class="form-group form-control" type="text" name="spot[image]" value="<%= spot.image %>">
+                  <input class="form-group form-control" type="text" name="spot[description]" value="<%= spot.description %>">
+                  <button class="btn btn-block btn-primary">SUBMIT!</button>
+                  <a href="/spots">Go back!</a>      
+            </div>
+      </div>
+   </div>
+</form>
+ 
+
+<% include ../partials/footer %>

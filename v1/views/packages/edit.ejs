@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+ 
+
+<form action="/packages/<%= package._id %>?_method=PUT" method="POST">
+   <div class="container">
+      <h1 style="text-align: center; margin: 25px; "> Edit <%= package.name %></h1>
+      <div class="row">
+            <div style="width: 30%; margin: 0 auto;">
+                  <input class="form-group form-control" type="text" name="package[name]" value="<%= package.name %>">
+                  <input class="form-group form-control" type="text" name="package[image]" value="<%= package.image %>">
+                  <input class="form-group form-control" type="text" name="package[description]" value="<%= package.description %>">
+                  <button class="btn btn-block btn-primary">SUBMIT!</button>
+                  <a href="/packages">Go back!</a>      
+            </div>
+      </div>
+   </div>
+</form>
+ 
+
+<% include ../partials/footer %>
