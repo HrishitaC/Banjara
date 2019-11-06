@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+            <p class="lead" style="padding: 5px;"><strong>Tours</strong></p>
+            <div class="list-group">
+                <% spot.tours.forEach(function(tour){ %>
+                    <li class="list-group-item"><a href="/tours/<%= tour._id%>"><%= tour.name %></a></li>
+                <% }); %>
+            </div>
+
+            <p class="lead" style="padding: 5px;"><strong>Hotels</strong></p>
+            <div class="list-group">
+                <% spot.hotels.forEach(function(hotel){ %>
+                    <li class="list-group-item"><a href="/hotels/<%= hotel._id %>"><%= hotel.name %></a></li>
+                <% }); %>
+            </div>
+
+            <p class="lead" style="padding: 5px;"><strong>Packages</strong></p>
+            <div class="list-group">
+                <% spot.packages.forEach(function(package){ %>
+                    <li class="list-group-item"><a href="/packagess/<%= package._id %>"><%= package.name %></a></li>
+                <% }); %>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="img-thumbnail" style="padding: 9px;">
+                <img style="width:100%;" class="img-fluid" src="<%= spot.image %>">
+                <h1 class="caption-full"><%= spot.name %></h1>
+                <h3><%= spot.state %>, <%= spot.country %></h3>
+                <p style="text-align: justify;"><%= spot.description %></p>
+                <p>
+                    <em>
+                        Submitted by <%= spot.author.username %>
+                    </em>
+                </p>
+            </div>
+            <br>
+            <div class="card" style="background-color: rgba(0,0,0,0.04); padding: 9px;">
+                <div class="text-right">
+                        <a style="margin: 5px 3px;" class = "btn btn-success" href="/spots/<%= spot._id %>/comments/new">Add new comment</a>
+                        <hr>
+                </div>
+                <% spot.comments.forEach(function(comment){ %>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <strong><%= comment.author.username %></strong>
+                                    <p style="margin: 2px;">
+                                        <%= comment.text %>
+                                    </p>
+                                    <% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                        <a class="btn btn-sm btn-warning" style="color: white;"  
+                                        href="/spots/<%= spot._id %>/comments/<%= comment._id %>/edit">
+                                        Edit
+                                        </a>
+                                        <form action="/spots/<%= spot._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST" style="display: inline;">
+                                            <button class="btn btn-sm btn-danger" style="color: white;">Delete</button>
+                                        </form>
+                                    <% } %>
+                                </div>
+                        </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
