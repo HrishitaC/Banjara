@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+
+<form action="/hotels/<%= hotel._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+   <div class="container">
+         <h1 style="text-align: center; margin: 25px; "> Edit the comment to <%= hotel.name %></h1>
+      <div class="row">
+            <div style="width: 30%; margin: 0 auto;">
+                  <input class="form-group form-control" type="text" name="comment[text]" value="<%= comment.text %>">
+                  <button class="btn btn-block btn-primary">SUBMIT!</button>
+                  <a href="/hotels/<%= hotel._id %>">Go back!</a>      
+            </div>
+      </div>
+   </div>
+</form>
+ 
+
+<% include ../partials/footer %>

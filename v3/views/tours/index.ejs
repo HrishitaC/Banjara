@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+<br>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Around the city in a day!</h1>
+            <p>Give your feet a rest and book one of the city tours to explore the entire city in one day!</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/tours/new">Add a new tour!</a>
+            </p>
+        </div>  
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% tours.forEach(function(tour){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="img-thumbnail">
+                    <img class="img-fluid" src = "<%=tour.image %>">
+                    <div class="caption">
+                        <h4>
+                            <%= tour.name %>
+                        </h4>
+                    </div>
+                    <p>
+                        <a href="/tours/<%= tour._id %>" class="btn btn-primary">More info!</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

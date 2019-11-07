@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<% spots_list = [] %>
+
+<% spots.forEach(function(spot){ %>
+      <% spots_list.push({name: spot.name, id: spot._id}); %>
+<% }); %>
+
+<%  tours_list = [] %>
+
+<% tours.forEach(function(tour){ %>
+      <% tours_list.push({name: tour.name, id: tour._id}); %>
+<% }); %>
+
+<% hotels_list = [] %>
+
+<% hotels.forEach(function(hotel){ %>
+      <% hotels_list.push({name: hotel.name, id: hotel._id}); %>
+<% }); %>
+
+<form action="/packages" method="POST">
+   <div class="container">
+      <h1 style="text-align: center; margin: 25px; "> Create a new package!</h1>
+      <div class="row">
+            <div style="width: 30%; margin: 0 auto;">
+                  <input class="form-group form-control" type="text" name="name" placeholder="Package name">
+                  <input class="form-group form-control" type="text" name="image" placeholder="Image URL">
+                  <input class="form-group form-control" type="text" name="description" placeholder="Package decsription">
+                  <p>Choose spots to be added (Hold CTRL / CMD for selecting multiple fields)</p>
+                  <select name="addedSpots" class="custom-select" multiple>
+                        <% spots_list.forEach(function(spot){ %>
+                              <option value="<%= spot.id %>"><%= spot.name %></option>
+                        <% }); %>                          
+                  </select>
+                  <hr>                       
+                  <button class="btn btn-block btn-primary">SUBMIT!</button>
+                  <a href="/packages">Go back!</a>      
+            </div>
+      </div>
+   </div>
+</form>
+ 
+
+<% include ../partials/footer %>

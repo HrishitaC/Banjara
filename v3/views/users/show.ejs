@@ -1,0 +1,66 @@
+<% include ../partials/header %>
+
+<div class="container">
+        <h3><%= user.username %></h3>
+        <form style="display:inline" action="/users/<%= user._id %>?_method=delete" method="POST">
+            <button class="btn btn-danger" style="color: white;">DELETE</button>
+        </form>
+        <hr>
+    <div class="row">
+        <div class="col-md-3">
+               
+                <p class="lead" style="padding: 5px;"><strong>Card Details</strong></p>
+                <div class="list-group">
+                        <li class="list-group-item">
+                            <p><em>Account Holder Name: </em><%= user.account.holderName %></p>
+                            <p><em>Bank: </em><%= user.account.bankName %></p>
+                            <p><em>Card Number: </em><%= user.account.number %></p>
+                        </li>              
+                </div>
+        </div>
+        <div class="col-md-3">
+                <p class="lead" style="padding: 5px;"><strong>Cart</strong></p>
+                <hr>
+                <p class="lead" style="padding: 5px;"><strong>Packages</strong></p>
+                <div class="list-group">
+                    <% var ct = 1 %>
+                    <% user.cartPackages.forEach(function(cartItem){ %>
+                        <a class="list-group-item" href="/packages/<%= cartItem._id %>">Package <%= ct %></a>
+                        <% ct = ct+1 %>
+                    <% }); %>
+                </div>
+                <hr>
+                <p class="lead" style="padding: 5px;"><strong>Tours</strong></p>
+                <div class="list-group">
+                    <% var ct = 1 %>
+                    <% user.cartTours.forEach(function(cartItem){ %>
+                        <a class="list-group-item" href="/tours/<%= cartItem._id %>">Tour <%= ct %></a>
+                        <% ct = ct+1 %>
+                    <% }); %>
+                </div>
+                <hr>
+                <p class="lead" style="padding: 5px;"><strong>Hotels</strong></p>
+                <div class="list-group">
+                    <% var ct = 1 %>
+                    <% user.bookedHotels.forEach(function(cartItem){ %>
+                        <a class="list-group-item" href="/hotels/<%= cartItem._id %>">Hotel <%= ct %></a>
+                        <% ct = ct+1 %>
+                    <% }); %>
+                </div>
+        </div>
+        <div class="col-md-3">
+                <p class="lead" style="padding: 5px;"><strong>Made Packages</strong></p>
+                <div class="list-group">
+                    <% var ct = 1 %>
+                    <% user.madePackages.forEach(function(madeItem){ %>
+                        <a class="list-group-item" href="/packages/<%= madeItem._id %>">Package <%= ct %></a>
+                        <% ct = ct+1 %>
+                    <% }); %>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
+<% include ../partials/footer %>
