@@ -46,39 +46,39 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     });
 });
 
-// //EDIT ROUTE - Show edit form
-// router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
-//     Spot.findById(req.params.id, function(err, foundSpot){
-//         if(err){
-//             res.redirect("back");
-//         } else {
-//             Comment.findById(req.params.comment_id, function(err, foundComment){
-//                 res.render("comments/edit", {spot: foundSpot, comment: foundComment});
-//             });
-//         }
-//     });
-// });
+//EDIT ROUTE - Show edit form
+router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
+    Spot.findById(req.params.id, function(err, foundSpot){
+        if(err){
+            res.redirect("back");
+        } else {
+            Comment.findById(req.params.comment_id, function(err, foundComment){
+                res.render("comments/edit", {spot: foundSpot, comment: foundComment});
+            });
+        }
+    });
+});
 
-// //UPDATE ROUTE - Update comment
-// router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
-//     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updated){
-//         if(err){
-//             res.redirect("back");
-//         } else {
-//             res.redirect("/spots/"+req.params.id);
-//         }
-//     });
-// });
+//UPDATE ROUTE - Update comment
+router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updated){
+        if(err){
+            res.redirect("back");
+        } else {
+            res.redirect("/spots/"+req.params.id);
+        }
+    });
+});
 
-// //DESTROY ROUTE - Delete comment
-// router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
-//     Comment.findByIdAndRemove(req.params.comment_id, function(err){
-//         if(err){
-//             res.redirect("back");
-//         } else {
-//             res.redirect("/spots/"+req.params.id);
-//         }
-//     });
-// });
+//DESTROY ROUTE - Delete comment
+router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
+    Comment.findByIdAndRemove(req.params.comment_id, function(err){
+        if(err){
+            res.redirect("back");
+        } else {
+            res.redirect("/spots/"+req.params.id);
+        }
+    });
+});
 
 module.exports = router;
